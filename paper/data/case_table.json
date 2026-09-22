@@ -1,0 +1,47 @@
+{
+  "case_id": "test_T100_s6800",
+  "maturity": "M50",
+  "decision_index": 7,
+  "decision_at": 600,
+  "next_checkpoint": 700,
+  "prior_service_stall_intervals": 5,
+  "service_before": [
+    8.0,
+    4.0
+  ],
+  "service_after": [
+    7.0,
+    3.0
+  ],
+  "basic_service_after": [
+    1.0,
+    1.0
+  ],
+  "zero_feasible_task_count": 4,
+  "previous_candidate_trials": 100,
+  "previous_service_worsening_rejections": 87,
+  "removal_ratio_before": 0.4,
+  "removal_ratio_after": 0.5,
+  "retained_controls": {
+    "destroy_priority": [
+      "random_removal",
+      "time_related_removal",
+      "worst_cost_removal"
+    ],
+    "repair_priority": [
+      "best_insertion"
+    ],
+    "search_bias": {
+      "destroy_selector": "random",
+      "task_selector": "random"
+    },
+    "acceptance": {
+      "mode": "tolerant",
+      "worsening_tolerance": 0.02
+    },
+    "focus_id": "service_bottleneck"
+  },
+  "plot_first_checkpoint": 400,
+  "plot_last_checkpoint": 800,
+  "interpretation": "Recorded observation, control change and subsequent outcome; no causal attribution."
+}

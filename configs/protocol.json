@@ -1,0 +1,83 @@
+{
+  "status": "frozen",
+  "sizes": [
+    50,
+    100,
+    300
+  ],
+  "initial_fractions": [
+    0.1,
+    0.5,
+    0.9
+  ],
+  "generation": {
+    "window_half": 56.0,
+    "planned_wait": [
+      4.0,
+      20.0
+    ],
+    "energy_margin": 1.15,
+    "rare_fraction": 0.33,
+    "cross_route_fraction": 0.48,
+    "priority_rare_boost": 0.45,
+    "spatial_jitter": 0.33
+  },
+  "methods": [
+    "agent",
+    "basic"
+  ],
+  "trials": 1200,
+  "action_trials": 100,
+  "algorithm_seed": 0,
+  "model": "deepseek-v4-flash",
+  "reasoning": "none",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "max_output_repairs": 4,
+  "max_run_attempts": 3,
+  "objective": [
+    "missed_priority",
+    "unassigned_count",
+    "energy_total"
+  ],
+  "checkpoints": [
+    0,
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900,
+    1000,
+    1100,
+    1200
+  ],
+  "information_revision": "transfer_energy_v17_large_initial_consolidation",
+  "agent_example_file": "configs/agent_examples.json",
+  "energy_definition": "transfer-only closed-route energy",
+  "statistical_unit": "instance, with three dependent nested starts",
+  "frozen_utc": "2026-09-20T18:11:55.366096+00:00",
+  "evaluation_freeze_utc": "2026-09-21T07:02:13.776698+00:00",
+  "instance_seeds": {
+    "test": [
+      6800,
+      6801,
+      6802,
+      6803,
+      6804
+    ]
+  },
+  "dataset_roots": {
+    "test": "data/test"
+  },
+  "analysis_plan": {
+    "energy_reporting_tolerance": {
+      "rel_tol": 1e-10,
+      "abs_tol": 1e-07
+    }
+  },
+  "evaluation_design": "固定实例上的回顾性评估；不是新增的独立盲测。"
+}

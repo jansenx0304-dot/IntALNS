@@ -1,0 +1,55 @@
+\section{The \IntALNS{} Method}
+\label{sec:method}
+IntALNS couples interpretable LLM-agent decisions with adaptive large neighborhood search. Allocation observations, execution history, and strategy examples inform neighborhood controls and their stated rationales; ALNS reconstructs routes, enforces feasibility, and returns outcomes for subsequent decisions (Fig.~\ref{fig:framework}). The current and historical-best solutions and adaptive search state persist across windows.
+
+\begin{figure}[htbp]
+\centering
+\input{figures/framework.tikz}
+\caption{Allocation observations, history, and strategy examples inform LLM rationales and search controls; ALNS executes the controls and returns feedback.}
+\label{fig:framework}
+\end{figure}
+
+\subsection{Interpretable Search Decisions}
+\begin{samepage}
+The allocation observation $o_t$ summarizes the search state through current and historical-best objective values, unassigned tasks, compatible platforms, feasible insertion positions, and time and energy margins. The agent uses this information to assess the current allocation and select the search focus and neighborhood controls for the next window.
+\par\end{samepage}
+
+\begin{samepage}
+At search window $t$, the agent combines $o_t$ with execution history $\mathcal H_t$ and retrieved strategy examples $\mathcal E_t$ to choose $\mathbf u_t$, which specifies the search focus, operator preferences, removal strength, and acceptance setting. The decision is expressed as
+\begin{equation}
+ \mathbf u_t=\operatorname{LLM}(o_t,\mathcal H_t,\mathcal E_t),
+ \label{eq:agent}
+\end{equation}
+\end{samepage}
+
+Execution history $\mathcal H_t$ records the controls applied in earlier windows together with their observed objective changes, operator use, acceptance outcomes, and insertion results. It supplies the agent with evidence of how previous search adjustments performed and whether allocation progress has continued or stalled. Relating this feedback to the current observation supports decisions about retaining a productive direction, changing operator preferences, or increasing the extent of route reconstruction.
+
+Strategy examples $\mathcal E_t$ are retrieved from development instances according to task scale and search situation. Each example pairs a previous decision with its execution outcome, providing a concrete reference for addressing a related allocation difficulty. The examples broaden the decision context with experience from other searches, while $\mathcal H_t$ supplies feedback from the ongoing run; together, they inform controls suited to the current state.
+
+Interpretability comes from grounding the stated rationale in recorded evidence. For subsequent decisions, the agent must reference actual historical feedback, such as objective changes or insertion results, and explain how it motivates the proposed control. Retaining this rationale alongside the observation, executed control, and subsequent outcome lets readers trace which feedback informed the adjustment and how the stated decision was carried out. This makes the basis of search control explicit.
+
+\subsection{Agent-Controlled Destroy-and-Repair Search}
+Within each window, the agent's operator preferences combine with ALNS adaptive weights to select destroy and repair operators. Preferences reflect the current allocation state, while adaptive weights reflect earlier operator performance. Removal strength sets the number of tasks removed; destroy operators select them randomly or by local route cost, spatial proximity, or related time windows.
+
+Removed and previously unassigned tasks form the repair pool. The search focus guides stochastic task selection, either across the pool or toward tasks with limited feasible insertion opportunities. Repair then chooses the feasible position with the smallest incremental transfer energy or samples a feasible position randomly. Reassessing insertion opportunities as routes change allows reconstruction to revise task assignments and visit orders.
+
+Candidates follow the lexicographic objective in Eq.~\eqref{eq:objective}. Improvements in $(L_1,L_2)$ are accepted and deteriorations rejected. At equal $L_1$ and $L_2$, greedy acceptance permits no increase in $L_3$, while threshold or simulated-annealing acceptance can admit temporary increases under the selected setting.\cite{santini2018} The historical-best solution is retained separately from the current solution. Each window's objective changes and search outcomes are added to $\mathcal H_t$ for the next decision. Algorithm~\ref{alg:intalns} summarizes the cycle.
+
+\begin{algorithm}[H]
+\caption{IntALNS}
+\label{alg:intalns}
+\begin{algorithmic}[1]
+\Require Instance $I$, feasible initial solution $S_0$, search budget $B$, control interval $h$
+\State $S\gets S_0$; $S^\star\gets S_0$; $\mathcal H_0\gets\varnothing$; initialize adaptive search state
+\For{$t=0,\ldots,B/h-1$}
+  \State Form $o_t$ from $I$, $S$, $S^\star$, insertion opportunities, and remaining budget
+  \State Retrieve $\mathcal E_t$; obtain and validate $\mathbf u_t$ using Eq.~\eqref{eq:agent}
+  \For{$j=1,\ldots,h$}
+    \State Sample operators using $\mathbf u_t$ and adaptive weights; remove and repair tasks to form $S'$
+    \State Evaluate $S'$; update $S$ by the acceptance rule, $S^\star$ by Eq.~\eqref{eq:objective}, and search statistics
+  \EndFor
+  \State Append $\mathbf u_t$ and execution feedback to $\mathcal H_t$ to form $\mathcal H_{t+1}$
+\EndFor
+\State \Return $S^\star$
+\end{algorithmic}
+\end{algorithm}

@@ -1,0 +1,56 @@
+\section{Experiments}
+\label{sec:experiments}
+\input{tables/main_table_notes.tex}
+\input{tables/case_notes.tex}
+\subsection{Experimental Environment}
+The LLM agent uses DeepSeek-V4-Flash, a mixture-of-experts language model supporting both thinking and non-thinking modes. Experiments disable additional reasoning and set the sampling temperature to 0.
+
+\subsection{Dataset Generation}
+Synthetic instances contain six heterogeneous platforms and 50, 100, or 300 tasks, denoted T50, T100, and T300. Task locations, requirements, service durations, time windows, and platform resources are generated jointly from complete, capability-compatible reference routes. The service-start time windows accommodate the reference visits, and energy budgets exceed reference-route transfer energy. Each instance therefore admits a complete feasible allocation. Five instances per scale give \InstanceCount{} instances. Within each instance, one random permutation selects nested task subsets with initial allocation ratios of 10\%, 50\%, and 90\%, denoted M10, M50, and M90. Initial routes preserve the relative order of retained tasks; the remaining tasks are unassigned. Search may reorder or reassign tasks, giving \PairCount{} instance--start conditions.
+
+\subsection{Task Allocation Performance}
+Basic is an adaptive ALNS baseline without LLM search control; it updates operator probabilities using historical rewards. Both methods share the initial solutions, operator library, and constraint handling. Basic's parameters were selected on a small separate tuning set, with one configuration per task count. Both methods use algorithm seed 0 and 1200 iters; best solutions are recorded every 100 iters, when IntALNS also updates its controls.
+
+Mean $L_1$ and $L_2$ cover all conditions, and wins/ties/losses (W/T/L) compare IntALNS against Basic under the full lexicographic objective. Mean $L_3$ uses the subset defined in Table~\ref{tab:main}. A complete allocation assigns every task, giving $L_1=L_2=0$.
+
+IntALNS produces solutions with lower priority loss and more complete allocations. Across the \PairCount{} conditions, mean priority loss decreases from \BasicPriorityMean{} to \AgentPriorityMean{}, a reduction of \PriorityReduction\%, while complete allocations increase from \BasicComplete{} for Basic to \AgentComplete{} for IntALNS. Mean unassigned task count also falls, from \BasicCountMean{} to \AgentCountMean{}. Under the full lexicographic objective, IntALNS records \AllWins{} wins, \AllTies{} ties, and \AllLosses{} losses (Table~\ref{tab:main}). The aggregate improvement thus includes both reduced priority loss and fewer omitted tasks.
+
+\begingroup
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\input{tables/main_results.tex}
+\endgroup
+
+The scale-specific results highlight two aspects of this improvement. T300 has the largest absolute decrease in mean priority loss, from \BasicLargePriorityMean{} to \AgentLargePriorityMean{}, as the same fleet handles the largest task set. At T100, complete allocations increase from \BasicMediumComplete{} to \AgentMediumComplete{} of the 15 conditions, showing that more searches resolve all remaining assignments. Together, these findings indicate better protection of important monitoring tasks and a greater ability to include the full task set in a feasible solution.
+
+The advantage develops at different stages of the search. At T100 and T300, IntALNS reaches lower mean priority loss and unassigned task count by 100 iters and maintains both gaps throughout the search. At T50, IntALNS initially leaves more tasks unassigned, and its advantage emerges later, first in priority loss and then in unassigned task count. These trajectories connect the final allocation gains to improvements developed during search (Fig.~\ref{fig:convergence}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{convergence.pdf}
+\caption{Mean priority loss and unassigned task count of the lexicographic-best solutions across the 15 instance--start conditions at each task scale.}
+\label{fig:convergence}
+\end{figure}
+
+Among pairs with matching $L_1$ and $L_2$, IntALNS achieves lower mean $L_3$ on T50 and T100, whereas T300 shows a small increase (Table~\ref{tab:main}). This increase alone does not indicate poorer allocation performance overall, because equal $L_1$ and $L_2$ can correspond to different task assignments and routes with different transfer-energy costs.
+
+\subsection{Interpretability Analysis}
+To examine the interpretability of IntALNS decisions, we trace one search transition from the observed allocation state to the agent rationale, executed control, and subsequent outcome.
+At \CaseStart{} iters in T\CaseSize{}, instance \CaseSeed{}, \CaseMaturity{}, $(L_1,L_2)$ had remained unchanged for \CaseStall{} consecutive search windows, while $L_3$ decreased in the latest window. All \CaseUninsertable{} unassigned tasks lacked a feasible insertion position. The agent interpreted this combination as a need to release assigned tasks that blocked further allocation and proposed broader route reconstruction. It increased the removal ratio from \CaseBeforeRatio{} to \CaseAfterRatio{}, keeping the other controls unchanged. The excerpts in Table~\ref{tab:case_decision} link the observed bottleneck to this rationale and the executed control.
+
+By \CaseEnd{} iters, $(L_1,L_2)$ improved from $(\CaseBeforePriority,\CaseBeforeCount)$ to $(\CaseAfterPriority,\CaseAfterCount)$ (Fig.~\ref{fig:case}). The recorded rationale identifies stalled task allocation as the reason for increasing removal strength, making the link between the observed search state and the executed control explicit.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{.48\linewidth}
+\vspace{0pt}\raggedright
+\includegraphics[width=\linewidth]{decision_case.pdf}
+\caption{\raggedright Neighborhood adjustment following task-allocation stagnation. Shading marks \CaseStart{}--\CaseEnd{} iters after the control adjustment; labels give $(L_1,L_2)$.}
+\label{fig:case}
+\end{minipage}\hfill
+\begin{minipage}[t]{.48\linewidth}
+\vspace{0pt}\raggedright
+\captionof{table}{\raggedright Observed bottleneck, decision rationale, and executed control.}
+\label{tab:case_decision}
+\input{tables/case_decision.tex}
+\end{minipage}
+\end{figure}

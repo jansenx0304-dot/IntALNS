@@ -1,0 +1,51 @@
+{
+  "revision": "LARGE_INITIAL_V17",
+  "scope": "Information for large initial backlogs and the immediately observed consolidation opportunity. Actual controls remain Agent decisions; no executed schedule, new control or extra budget.",
+  "provenance": {
+    "kind": "Fixed-control development probes, not complete Agent performance or a single-mechanism causal result",
+    "old_data": "T300 seeds5200-5204, M10/M50, ten paired starts; algorithm seed0",
+    "new_data": "T300 seeds6200-6204, M10/M50, ten additional paired starts; algorithm seed0",
+    "design": "Only the first100-trial complete control differs. Both branches then use two common100-trial windows with spatial/random/time destruction, ratio.40, best-position repair, service focus, tolerant.02. RNG and adaptive state are carried; live focus targets are recomputed perwindow.",
+    "old_outcome_at300": "Reference L1/L2 sums144/88; illustrated initial control116/61; paired W/T/L7/0/3.",
+    "new_outcome_at300": "Reference127/75; illustrated105/61; paired6/0/4. At100, both had total L1=202; downstream continuation matters.",
+    "negative_contrast": "Merely adding random-position repair to reference spatial.40/tolerant.02 increased old-data L1 from144 to155 at300. The evidence concerns the whole illustrated initial neighborhood, not a claim that mixed positions alone are superior."
+  },
+  "phases": {
+    "initial": {
+      "state": "Large initial backlog with no current-run history",
+      "lesson": "Test the measured spatial/worst/random .30, mixed best/random POSITION, greedy initial neighborhood when compatible with the live state. Both TASK selectors stay random. This complete control improved service after common continuation on both development sets; merely adding random positions to the old .40 control did not. Do not infer a universal repair advantage. The probes used best-position consolidation afterward, not indefinite mixed-position repetition; inspect the next residual state before choosing continuation.",
+      "illustrative_valid_response": {
+        "step_decision": {
+          "action": "run_alns",
+          "control": {
+            "focus_id": "service_bottleneck",
+            "destroy_priority": ["spatial_related_removal", "worst_cost_removal", "random_removal"],
+            "repair_priority": ["best_insertion", "random_insertion"],
+            "remove_ratio": 0.3,
+            "search_bias": {"destroy_selector": "random", "task_selector": "random"},
+            "acceptance": {"mode": "greedy"}
+          },
+          "rationale": {"reason": "Test the complete initial spatial neighborhood supported by two development batches, then evaluate residual service before deciding how to consolidate the routes.", "refs": []}
+        }
+      }
+    },
+    "consolidate": {
+      "state": "One observed mixed-position initial window from a large backlog; service remains incomplete",
+      "lesson": "The retrieved probe's downstream advantage was measured with best-position repair and spatial/random/time .40, tolerant.02 after the first mixed-position window. Compare that consolidation hypothesis with the current residual gap and rejection feedback. Initial service improvement does not establish that mixed positions should continue indefinitely. Energy tolerance is a bounded hypothesis, not evidence that the present run has an energy barrier. Keep the best service vector and judge the next measured window; later behavior is selected from live feedback.",
+      "illustrative_valid_response": {
+        "step_decision": {
+          "action": "run_alns",
+          "control": {
+            "focus_id": "service_bottleneck",
+            "destroy_priority": ["spatial_related_removal", "random_removal", "time_related_removal"],
+            "repair_priority": ["best_insertion"],
+            "remove_ratio": 0.4,
+            "search_bias": {"destroy_selector": "random", "task_selector": "random"},
+            "acceptance": {"mode": "tolerant", "worsening_tolerance": 0.02}
+          },
+          "rationale": {"reason": "Compare best-position consolidation after the observed initial mixed-position neighborhood; retain service protection and evaluate the next residual-service outcome.", "refs": []}
+        }
+      }
+    }
+  }
+}

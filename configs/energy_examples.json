@@ -1,0 +1,252 @@
+{
+  "revision": "COMPACT_ENERGY_V15",
+  "provenance": {
+    "dataset": "All15 T50 V12 final development states, seeds5200-5204, algorithm seed0",
+    "kind": "60 paired two-window probes, each100 exploration+100 consolidation; final states reused, RNG/adaptation reset then carried inside each pair; not full Agent performance",
+    "observations": "Greedy best-position random-leading .20 in both windows improved3/15 with total energy gain1520.58. Random-only .20/tolerant .20 then greedy improved3/15, gain749.89. Spatial/random-only .30/tolerant .20 then greedy .20 improved4/15, gain645.57. SA/mixed .20 then greedy improved4/15, gain578.37. Every saved state retained complete service. No single control dominated all states.",
+    "v13_review": "All15 V13 T50 runs complete service; paired result5/6/4. Failed spatial/random-position pairs were repeatedly reselected; random-leading greedy descent was sometimes abandoned after only one quiet window. Retrieval now records actual recipe exposure, provides a factual continuation example, and rotates information away from already tried profiles. No control is executed by retrieval.",
+    "specialized_probes": "75 paired two-window probes on all15 V14 T50 complete finals. Time-only .20 greedy best-position improved2/15 (total1199.79); time-only .40 then .20 improved2/15 (1061.63); worst-only .40 improved0; random-only destruction .20 improved0 and .40 improved1 (351.09). These are short probes with reset history, not full Agent superiority; transferring time-focused descent earlier is unmeasured."
+  },
+  "scope": "Complete-service small-instance information only. Actual next controls are chosen by Agent; no fixed execution schedule.",
+  "phases": {
+    "settle": {
+      "state": "Newly complete compact service",
+      "lesson": "Time-coherent removal is an available low-disruption energy descent hypothesis: a time-only .20 greedy best-position probe improved two of15 saved plateaus where several position-diversifying probes failed. Transfer to newly complete service is a hypothesis, not measured initial superiority. Try the actual time-only neighborhood, then continue only from live energy outcomes. A single enabled Destroy operator is legal; it isolates that neighborhood from mixture dilution while keeping random task and move selection.",
+      "illustrative_valid_response": {
+        "step_decision": {
+          "rationale": {
+            "reason": "With complete service, test time-related removal and greedy best-position repair for energy descent; compare the next window rather than assuming the service-recovery mixture is also best for energy.",
+            "refs": []
+          },
+          "action": "run_alns",
+          "control": {
+            "focus_id": "global",
+            "destroy_priority": [
+              "time_related_removal"
+            ],
+            "repair_priority": [
+              "best_insertion"
+            ],
+            "remove_ratio": 0.2,
+            "search_bias": {
+              "destroy_selector": "random",
+              "task_selector": "random"
+            },
+            "acceptance": {
+              "mode": "greedy"
+            }
+          }
+        }
+      }
+    },
+    "progress": {
+      "state": "Best energy is improving or only one quiet window has occurred",
+      "lesson": "Continue the actual energy-improving control rather than immediately switching to an exploration example. One quiet window is not a proof of exhaustion. Use actual complete controls and before/after best energy."
+    },
+    "explore": {
+      "state": "At least two windows with no retained-best improvement",
+      "lesson": "Select a materially different energy neighborhood when the previous one has stalled. The retrieved profile is chosen using actual energy-window exposure; review its basis and the live rejection counts. The provided counts refer to matching leading family, repair list, ratio and acceptance mode, not causal credit or exact route identity. A previous failed profile remains failed evidence; do not describe it as untried. Random-position and SA profiles were tested with a subsequent greedy consolidation; the wide greedy profile is a trajectory-based hypothesis. Choose an alternative if the live state contradicts the case.",
+      "illustrative_valid_response": {
+        "step_decision": {
+          "rationale": {
+            "reason": "Best energy has stalled. Test a bounded random-position exploration window with spatial destruction, then evaluate whether greedy consolidation can improve the retained best.",
+            "refs": []
+          },
+          "action": "run_alns",
+          "control": {
+            "focus_id": "global",
+            "destroy_priority": [
+              "spatial_related_removal",
+              "worst_cost_removal",
+              "random_removal"
+            ],
+            "repair_priority": [
+              "random_insertion"
+            ],
+            "remove_ratio": 0.3,
+            "search_bias": {
+              "destroy_selector": "random",
+              "task_selector": "random"
+            },
+            "acceptance": {
+              "mode": "tolerant",
+              "worsening_tolerance": 0.2
+            }
+          }
+        }
+      }
+    },
+    "consolidate": {
+      "state": "Previous complete-service window allowed energy exploration",
+      "lesson": "Now test greedy best-position repair to consolidate the explored working routes, keeping the same leading destruction family when sensible and using moderate .20 removal. The paired evidence applies to exploration followed by consolidation, not indefinite high-tolerance wandering. Continue if best energy improves; if not, retain that failure.",
+      "illustrative_valid_response": {
+        "step_decision": {
+          "rationale": {
+            "reason": "Consolidate the energy-exploration window with greedy best-position repair and moderate removal, retaining full service and the best solution.",
+            "refs": []
+          },
+          "action": "run_alns",
+          "control": {
+            "focus_id": "global",
+            "destroy_priority": [
+              "spatial_related_removal",
+              "worst_cost_removal",
+              "random_removal"
+            ],
+            "repair_priority": [
+              "best_insertion"
+            ],
+            "remove_ratio": 0.2,
+            "search_bias": {
+              "destroy_selector": "random",
+              "task_selector": "random"
+            },
+            "acceptance": {
+              "mode": "greedy"
+            }
+          }
+        }
+      }
+    }
+  },
+  "exploration_profiles": [
+    {
+      "name": "time_only20",
+      "control": {
+        "focus_id": "global",
+        "destroy_priority": [
+          "time_related_removal"
+        ],
+        "repair_priority": [
+          "best_insertion"
+        ],
+        "remove_ratio": 0.2,
+        "search_bias": {
+          "destroy_selector": "random",
+          "task_selector": "random"
+        },
+        "acceptance": {
+          "mode": "greedy"
+        }
+      },
+      "basis": "Measured .20 time-only greedy best-position pair improved2/15 complete development states."
+    },
+    {
+      "name": "time_only40",
+      "control": {
+        "focus_id": "global",
+        "destroy_priority": [
+          "time_related_removal"
+        ],
+        "repair_priority": [
+          "best_insertion"
+        ],
+        "remove_ratio": 0.4,
+        "search_bias": {
+          "destroy_selector": "random",
+          "task_selector": "random"
+        },
+        "acceptance": {
+          "mode": "greedy"
+        }
+      },
+      "basis": "Measured .40 time-only first window then .20 time-only greedy consolidation improved2/15 states."
+    },
+    {
+      "name": "spatial_random_positions",
+      "control": {
+        "focus_id": "global",
+        "destroy_priority": [
+          "spatial_related_removal",
+          "worst_cost_removal",
+          "random_removal"
+        ],
+        "repair_priority": [
+          "random_insertion"
+        ],
+        "remove_ratio": 0.3,
+        "search_bias": {
+          "destroy_selector": "random",
+          "task_selector": "random"
+        },
+        "acceptance": {
+          "mode": "tolerant",
+          "worsening_tolerance": 0.2
+        }
+      },
+      "basis": "Measured two-window probes improved4/15, with two gains below retained energy plateaus."
+    },
+    {
+      "name": "random_positions",
+      "control": {
+        "focus_id": "global",
+        "destroy_priority": [
+          "random_removal",
+          "spatial_related_removal",
+          "time_related_removal"
+        ],
+        "repair_priority": [
+          "random_insertion"
+        ],
+        "remove_ratio": 0.2,
+        "search_bias": {
+          "destroy_selector": "random",
+          "task_selector": "random"
+        },
+        "acceptance": {
+          "mode": "tolerant",
+          "worsening_tolerance": 0.2
+        }
+      },
+      "basis": "Measured random-leading position exploration then consolidation improved3/15."
+    },
+    {
+      "name": "annealed_mixed_positions",
+      "control": {
+        "focus_id": "global",
+        "destroy_priority": [
+          "random_removal",
+          "spatial_related_removal",
+          "time_related_removal"
+        ],
+        "repair_priority": [
+          "best_insertion",
+          "random_insertion"
+        ],
+        "remove_ratio": 0.2,
+        "search_bias": {
+          "destroy_selector": "random",
+          "task_selector": "random"
+        },
+        "acceptance": {
+          "mode": "simulated_annealing",
+          "worsening_tolerance": 0.2
+        }
+      },
+      "basis": "Measured SA/mixed position exploration then consolidation improved4/15."
+    },
+    {
+      "name": "wider_greedy_cost_removal",
+      "control": {
+        "focus_id": "global",
+        "destroy_priority": [
+          "worst_cost_removal",
+          "spatial_related_removal",
+          "random_removal"
+        ],
+        "repair_priority": [
+          "best_insertion"
+        ],
+        "remove_ratio": 0.4,
+        "search_bias": {
+          "destroy_selector": "random",
+          "task_selector": "random"
+        },
+        "acceptance": {
+          "mode": "greedy"
+        }
+      },
+      "basis": "In the V6 T50/s5202/M90 development trajectory, a worst-leading .40/best-only/greedy window lowered energy after repeated .20/.30 stalls. This is a full-control trajectory, not an isolated causal comparison."
+    }
+  ]
+}

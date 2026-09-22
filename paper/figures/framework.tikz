@@ -1,0 +1,15 @@
+\begin{tikzpicture}[
+ box/.style={draw=black!55,rounded corners=2pt,minimum height=12mm,text width=30mm,align=center,font=\small,inner sep=3pt},
+ flow/.style={-{Latex[length=2mm]},draw=black!65,line width=.65pt}
+]
+\node[box,fill=black!3] (state) {Allocation state\\and search history};
+\node[box,fill=green!6,right=7mm of state] (agent) {LLM agent\\Rationale +\\search control};
+\node[box,fill=blue!4,right=7mm of agent] (solver) {ALNS\\route reconstruction};
+\node[box,fill=black!3,right=7mm of solver] (feedback) {Execution feedback\\and outcomes};
+\node[draw=black!45,rounded corners=2pt,fill=black!2,above=2mm of agent,font=\small,inner sep=3pt] (examples) {Strategy examples};
+\draw[flow] (state)--(agent);
+\draw[flow] (examples)--(agent);
+\draw[flow] (agent)--(solver);
+\draw[flow] (solver)--(feedback);
+\draw[flow] (feedback.south)--++(0,-4mm)-| (state.south);
+\end{tikzpicture}

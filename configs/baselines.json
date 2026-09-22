@@ -1,0 +1,22 @@
+{
+  "basic": {
+    "50": {
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "remove_ratio_by_n_tasks": {}
+    },
+    "100": {
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "remove_ratio_by_n_tasks": {}
+    },
+    "300": {
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "remove_ratio_by_n_tasks": {}
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "overall": {
+    "conditions": 45,
+    "wtl": [
+      30,
+      5,
+      10
+    ],
+    "service_wtl": [
+      20,
+      20,
+      5
+    ],
+    "priority": [
+      82.0,
+      163.0
+    ],
+    "unassigned": [
+      63,
+      101
+    ],
+    "complete": [
+      25,
+      16
+    ],
+    "equal_service_energy_pairs": 20,
+    "equal_service_mean_energy_reduction_pct": 2.14463740208319
+  },
+  "inference": {
+    "method": "Exact two-sided paired sign-flip on instance mean win-minus-loss; all nested starts flip together",
+    "instance_scores": {
+      "test_T50_s6800": 0.6666666666666666,
+      "test_T50_s6801": 0.3333333333333333,
+      "test_T50_s6802": 1,
+      "test_T50_s6803": -0.6666666666666666,
+      "test_T50_s6804": 1,
+      "test_T100_s6800": 0.3333333333333333,
+      "test_T100_s6801": 0.3333333333333333,
+      "test_T100_s6802": 1,
+      "test_T100_s6803": 0,
+      "test_T100_s6804": 1,
+      "test_T300_s6800": 0.3333333333333333,
+      "test_T300_s6801": 0.3333333333333333,
+      "test_T300_s6802": 0.3333333333333333,
+      "test_T300_s6803": -0.3333333333333333,
+      "test_T300_s6804": 1
+    },
+    "independent_instances": 15,
+    "observed_sum": 6.666666666666667,
+    "permutations": 32768,
+    "p_two_sided": 0.0103759765625,
+    "agent_superiority_supported": true,
+    "calculation": "Integer dynamic counting of the same exact sign assignments; no Monte Carlo or alternative test",
+    "limitation": "One algorithm seed and one model realization per condition. Nested starts are dependent. Retrospective cohort reuse and sequential method selection limit confirmatory interpretation."
+  },
+  "convergence": {
+    "50": {
+      "agent": {
+        "missed_priority": 0.9222222222222223,
+        "unassigned_count": 0.6277777777777778
+      },
+      "basic": {
+        "missed_priority": 1.6111111111111112,
+        "unassigned_count": 0.8166666666666667
+      }
+    },
+    "100": {
+      "agent": {
+        "missed_priority": 2.2222222222222223,
+        "unassigned_count": 1.5666666666666667
+      },
+      "basic": {
+        "missed_priority": 3.216666666666667,
+        "unassigned_count": 2.2111111111111112
+      }
+    },
+    "300": {
+      "agent": {
+        "missed_priority": 5.416666666666667,
+        "unassigned_count": 3.8555555555555556
+      },
+      "basic": {
+        "missed_priority": 9.994444444444444,
+        "unassigned_count": 5.783333333333333
+      }
+    }
+  }
+}

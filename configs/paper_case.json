@@ -1,0 +1,18 @@
+{
+  "mode": "fixed",
+  "case_id": "test_T100_s6800",
+  "maturity": "M50",
+  "decision_index": 7,
+  "expected_start": 600,
+  "expected_service_before": [
+    8,
+    4
+  ],
+  "expected_service_after": [
+    7,
+    3
+  ],
+  "expected_changed_controls": [
+    "remove_ratio"
+  ]
+}

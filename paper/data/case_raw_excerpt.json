@@ -1,0 +1,35 @@
+{
+  "source_record": "results/test/seed_0/records/test_T100_s6800__M50__agent.json",
+  "source_decision_index_zero_based": 6,
+  "decision_at": 600,
+  "observation_fields": [
+    {
+      "path": "observation_summary.bottleneck.zero_feasible_task_count",
+      "value": 4
+    },
+    {
+      "path": "observation_summary.feedback.search_evidence.consecutive_windows_without_service_progress",
+      "value": 5
+    },
+    {
+      "path": "observation_summary.feedback.search_evidence.recent_windows[-1].energy_improved_at_equal_service",
+      "value": true
+    }
+  ],
+  "control_fields": [
+    {
+      "path": "decision.control.remove_ratio",
+      "value": 0.5
+    },
+    {
+      "path": "decision.control.focus_id",
+      "value": "service_bottleneck"
+    }
+  ],
+  "rationale_path": "decision.rationale.reason",
+  "rationale_full": "Service has stalled for five windows at [8,4] with all four unassigned tasks showing zero feasible positions, so probe a larger .50 destruction (about 48 tasks) to release coupled assigned blockers while keeping the service_bottleneck focus that produced the last best update and the tolerant .02 acceptance that let energy-only gains through.",
+  "rationale_excerpt": "Service has stalled for five windows at [8,4] with all four unassigned tasks showing zero feasible positions, so probe a larger .50 destruction (about 48 tasks) to release coupled assigned blockers",
+  "substring_start": 0,
+  "substring_end": 197,
+  "note": "Original field names and values; exact contiguous rationale excerpt. Line wrapping and JSON whitespace are presentation only."
+}

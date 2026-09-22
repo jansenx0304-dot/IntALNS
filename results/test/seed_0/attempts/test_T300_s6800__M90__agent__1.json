@@ -1,0 +1,25 @@
+{
+  "case_id": "test_T300_s6800",
+  "n_tasks": 300,
+  "instance_seed": 6800,
+  "maturity": "M90",
+  "fraction": 0.9,
+  "start_seed": 213425637,
+  "algorithm_seed": 0,
+  "method": "agent",
+  "trials": 1200,
+  "objective_order": [
+    "missed_priority",
+    "unassigned_count",
+    "energy_total"
+  ],
+  "start_quality": {
+    "missed_priority": 58.0,
+    "unassigned_count": 30,
+    "energy_total": 192986.25406802923
+  },
+  "attempt": 1,
+  "started_utc": "2026-09-20T18:14:21.324950+00:00",
+  "status": "complete",
+  "elapsed_sec": 80.25915160001023
+}

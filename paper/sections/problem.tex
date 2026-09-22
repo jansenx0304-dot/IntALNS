@@ -1,0 +1,26 @@
+\section{Problem Formulation}
+\label{sec:problem}
+Consider a known batch of monitoring tasks planned centrally for heterogeneous platforms with deterministic inputs. Each assigned task is executed without interruption by one platform. Task $i\in\mathcal T$ has a location, required payload and operating capabilities $\mathcal R_i$, service-start time window $[e_i,l_i]$, duration $s_i$, and priority $p_i\geq0$. Platform $a\in\mathcal A$ has capabilities $\mathcal C_a$, speed $v_a>0$, transfer-energy rate $\varepsilon_a$ per distance unit, and energy budget $E_a^{\max}$. All platforms depart from a common base, denoted $0$, at time zero.
+
+A solution $S$ comprises an ordered route $\Gamma_a=(i_{a,1},\ldots,i_{a,n_a})$ for each platform and an unassigned task set $U(S)$. Together, the routes and $U(S)$ partition $\mathcal T$, ensuring unique assignment. Each route includes departure from and return to the base, with task-to-platform assignments and visit orders determined jointly.
+
+Feasibility combines capability matching, timing, and transfer energy. Every assigned task requires $\mathcal R_{i_{a,r}}\subseteq\mathcal C_a$. With Euclidean distance $d_{ij}$, travel time is $\tau^a_{ij}=d_{ij}/v_a$. Set $i_{a,0}=0$ and $b_{a,0}=s_0=0$. The service-start time at each visit is
+\begin{equation}
+ b_{a,r}=\max\{e_{i_{a,r}},\,b_{a,r-1}+s_{i_{a,r-1}}+\tau^a_{i_{a,r-1},i_{a,r}}\},
+ \qquad b_{a,r}\leq l_{i_{a,r}}.
+ \label{eq:time}
+\end{equation}
+Early arrivals wait until the window opens; the upper bound constrains service start. The transfer energy for departure, intertask travel, and return is
+\begin{equation}
+ E_a(\Gamma_a)=\varepsilon_a\left(\sum_{r=1}^{n_a}d_{i_{a,r-1},i_{a,r}}+d_{i_{a,n_a},0}\right)\leq E_a^{\max}.
+ \label{eq:energy}
+\end{equation}
+Empty routes consume zero energy, and waiting and service contribute only to the time calculation.
+
+Solutions are ranked by the fixed three-level lexicographic objective
+\begin{equation}
+ \min_S^{\lex}(L_1,L_2,L_3),\qquad
+ L_1=\sum_{i\in U(S)}p_i,\quad L_2=|U(S)|,\quad L_3=\sum_{a\in\mathcal A}E_a(\Gamma_a).
+ \label{eq:objective}
+\end{equation}
+Minimizing priority loss $L_1$ favors assigning higher-priority tasks. At equal $L_1$, minimizing the unassigned task count $L_2$ favors including more tasks; at equal $L_1$ and $L_2$, minimizing $L_3$ reduces total transfer energy.

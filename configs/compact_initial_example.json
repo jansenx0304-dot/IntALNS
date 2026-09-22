@@ -1,0 +1,41 @@
+{
+  "role": "step",
+  "example_id": "COMPACT_INITIAL_V12",
+  "provenance": {
+    "dataset": "T50 seeds5200-5204, three nested starts, algorithm seed0",
+    "kind": "15 paired first-100-trial probes; not full Agent performance",
+    "contrast": "Spatial/worst/random destruction, .30 removal, focused random sampling and best+random POSITION repair gave total L1=10,L2=10 and11 complete starts. Random/time/worst .30 focus best-only gave L1=22,L2=16 and7 complete starts. Full lexicographic paired result was7W/1T/7L; control bundles differ in more than one component."
+  },
+  "scope": "Initial compact-instance hypothesis only; continue or change from live feedback, do not force a schedule.",
+  "state": "T50-scale initial state with no current-run history",
+  "lesson": "Test a coherent spatial neighborhood with position diversity early, before an unfavorable route structure becomes hard to change. The paired first-window probes support this complete service-recovery hypothesis on average, not universal superiority: there were seven losses as well as seven wins. Random task selection remains unchanged and is distinct from the two POSITION repair operators. Reassess after this one window: preserve service improvement, and once fully assigned refine energy with best-position repair according to actual outcomes. Do not infer eventual success from the first-window result.",
+  "illustrative_valid_response": {
+    "step_decision": {
+      "action": "run_alns",
+      "control": {
+        "focus_id": "service_bottleneck",
+        "destroy_priority": [
+          "spatial_related_removal",
+          "worst_cost_removal",
+          "random_removal"
+        ],
+        "repair_priority": [
+          "best_insertion",
+          "random_insertion"
+        ],
+        "remove_ratio": 0.3,
+        "search_bias": {
+          "destroy_selector": "random",
+          "task_selector": "random"
+        },
+        "acceptance": {
+          "mode": "greedy"
+        }
+      },
+      "rationale": {
+        "reason": "Test the measured compact initial spatial and mixed-position neighborhood; the next window will determine whether it recovers service and which strategy to retain.",
+        "refs": []
+      }
+    }
+  }
+}

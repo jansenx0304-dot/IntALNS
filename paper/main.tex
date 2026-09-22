@@ -1,0 +1,37 @@
+\documentclass[]{spie}
+\renewcommand{\baselinestretch}{1.0}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx,booktabs,array,siunitx}
+\usepackage{algorithm,algpseudocode}
+\usepackage{placeins,capt-of}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\graphicspath{{figures/}}
+\input{tables/numbers.tex}
+\newcommand{\lex}{\mathop{\mathrm{lex}}}
+\newcommand{\IntALNS}{IntALNS}
+\renewcommand{\keywords}[1]{%
+\par\vspace{0.5ex}{\noindent\normalsize\bfseries Keywords}\enspace #1%
+\vspace{0.5ex}}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input}}
+\algrenewcommand{\alglinenumber}[1]{\footnotesize #1.}
+\title{IntALNS: Interpretable LLM-Agent-Controlled Adaptive Large Neighborhood Search for Cooperative Marine Monitoring Task Allocation}
+\input{authors.tex}
+\pagestyle{empty}
+\begin{document}
+\maketitle
+\begin{abstract}
+Cooperative marine monitoring requires joint task allocation and visit sequencing under heterogeneous platform capabilities, service-start time windows, and transfer-energy limits. Changing routes alter task insertion opportunities, requiring decisions that respond to the current allocation. We propose Interpretable Agent-Controlled Adaptive Large Neighborhood Search (IntALNS), which uses allocation observations, search-execution feedback, and strategy examples to generate neighborhood controls with explicit decision rationales. The large language model agent determines how search proceeds, while ALNS reconstructs routes, enforces feasibility, and returns execution outcomes for subsequent decisions. Experiments compare IntALNS with an adaptive ALNS baseline on synthetic monitoring instances under the same search budget. Across \PairCount{} conditions, IntALNS reduces mean priority loss by \PriorityReduction\% and increases complete allocations from \BasicComplete{} to \AgentComplete{}. Search trajectories show sustained gains, and a recorded case connects allocation evidence, the agent's rationale, and executed controls. These results show that IntALNS improves the allocation of important monitoring tasks while providing an interpretable link between allocation bottlenecks, agent rationales, and executed search controls.
+\end{abstract}
+\keywords{cooperative marine monitoring, task allocation, large language model agent, adaptive large neighborhood search, interpretable search control}
+\input{sections/introduction.tex}
+\input{sections/problem.tex}
+\input{sections/method.tex}
+\newpage
+\input{sections/experiments.tex}
+\FloatBarrier
+\input{sections/conclusion.tex}
+\bibliography{references}
+\bibliographystyle{spiebib}
+\end{document}

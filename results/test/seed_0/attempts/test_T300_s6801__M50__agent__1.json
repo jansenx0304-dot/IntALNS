@@ -1,0 +1,25 @@
+{
+  "case_id": "test_T300_s6801",
+  "n_tasks": 300,
+  "instance_seed": 6801,
+  "maturity": "M50",
+  "fraction": 0.5,
+  "start_seed": 213456974,
+  "algorithm_seed": 0,
+  "method": "agent",
+  "trials": 1200,
+  "objective_order": [
+    "missed_priority",
+    "unassigned_count",
+    "energy_total"
+  ],
+  "start_quality": {
+    "missed_priority": 312.0,
+    "unassigned_count": 150,
+    "energy_total": 108750.76616594952
+  },
+  "attempt": 1,
+  "started_utc": "2026-09-21T04:04:01.403873+00:00",
+  "status": "complete",
+  "elapsed_sec": 299.2778517000261
+}

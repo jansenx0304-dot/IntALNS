@@ -1,0 +1,571 @@
+{
+  "case_id": "test_T50_s6804",
+  "n_tasks": 50,
+  "instance_seed": 6804,
+  "maturity": "M10",
+  "fraction": 0.1,
+  "start_seed": 213298735,
+  "algorithm_seed": 0,
+  "method": "basic",
+  "trials": 1200,
+  "objective_order": [
+    "missed_priority",
+    "unassigned_count",
+    "energy_total"
+  ],
+  "start_quality": {
+    "missed_priority": 100.0,
+    "unassigned_count": 45,
+    "energy_total": 6158.857703877986
+  },
+  "final_solution": {
+    "routes": {
+      "0": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        14,
+        24,
+        16
+      ],
+      "1": [
+        26,
+        35,
+        44,
+        46,
+        47,
+        48,
+        38,
+        39,
+        25,
+        41
+      ],
+      "2": [
+        18,
+        19,
+        20,
+        21,
+        22,
+        49
+      ],
+      "3": [
+        9,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "4": [
+        34,
+        11,
+        12,
+        13,
+        15,
+        17
+      ],
+      "5": [
+        42,
+        43,
+        10,
+        45,
+        37,
+        7,
+        8,
+        40
+      ]
+    },
+    "unassigned": [
+      23,
+      36
+    ]
+  },
+  "final_quality": {
+    "missed_priority": 2.0,
+    "unassigned_count": 2,
+    "energy_total": 28133.9315263804
+  },
+  "hard_feasible": true,
+  "trials_used": 1200,
+  "solver_time_sec": 5.845496899855789,
+  "llm_time_sec": 0.0,
+  "llm_usage": {},
+  "total_time_sec": 5.853203899983782,
+  "config": {
+    "remove_ratio": 0.2,
+    "reaction_factor": 0.1,
+    "acceptance": "greedy",
+    "block_trials": 100,
+    "remove_ratio_by_n_tasks": {}
+  },
+  "attempt": 1,
+  "status": "complete",
+  "checkpoints": [
+    {
+      "trial": 0,
+      "missed_priority": 100.0,
+      "unassigned_count": 45.0,
+      "energy_total": 6158.857703877988
+    },
+    {
+      "trial": 100,
+      "missed_priority": 6.0,
+      "unassigned_count": 2.0,
+      "energy_total": 26687.374863409525
+    },
+    {
+      "trial": 200,
+      "missed_priority": 6.0,
+      "unassigned_count": 2.0,
+      "energy_total": 26268.078647521615
+    },
+    {
+      "trial": 300,
+      "missed_priority": 6.0,
+      "unassigned_count": 2.0,
+      "energy_total": 26268.078647521615
+    },
+    {
+      "trial": 400,
+      "missed_priority": 5.0,
+      "unassigned_count": 3.0,
+      "energy_total": 26980.196580684948
+    },
+    {
+      "trial": 500,
+      "missed_priority": 5.0,
+      "unassigned_count": 3.0,
+      "energy_total": 26980.196580684948
+    },
+    {
+      "trial": 600,
+      "missed_priority": 4.0,
+      "unassigned_count": 2.0,
+      "energy_total": 27348.470803476273
+    },
+    {
+      "trial": 700,
+      "missed_priority": 4.0,
+      "unassigned_count": 2.0,
+      "energy_total": 27348.470803476273
+    },
+    {
+      "trial": 800,
+      "missed_priority": 4.0,
+      "unassigned_count": 2.0,
+      "energy_total": 27348.470803476273
+    },
+    {
+      "trial": 900,
+      "missed_priority": 4.0,
+      "unassigned_count": 2.0,
+      "energy_total": 27348.470803476273
+    },
+    {
+      "trial": 1000,
+      "missed_priority": 2.0,
+      "unassigned_count": 2.0,
+      "energy_total": 29439.875698601565
+    },
+    {
+      "trial": 1100,
+      "missed_priority": 2.0,
+      "unassigned_count": 2.0,
+      "energy_total": 29145.34501864067
+    },
+    {
+      "trial": 1200,
+      "missed_priority": 2.0,
+      "unassigned_count": 2.0,
+      "energy_total": 28133.93152638039
+    }
+  ],
+  "actions": [
+    {
+      "action_index": 1,
+      "global_trial_start": 0,
+      "global_trial_end": 100,
+      "iters_used": 100,
+      "controller": "basic",
+      "arm": null,
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "focus_id": "global",
+      "semantic_features": "disabled",
+      "acceptance": "greedy",
+      "global_best_improved": true,
+      "objective_before": {
+        "missed_priority": 100.0,
+        "unassigned_count": 45.0,
+        "energy_total": 6158.857703877988
+      },
+      "objective_after": {
+        "missed_priority": 6.0,
+        "unassigned_count": 2.0,
+        "energy_total": 26687.374863409525
+      },
+      "solver_time_sec": 0.47053089999826625,
+      "executor_stop_reason": "iteration_budget_exhausted"
+    },
+    {
+      "action_index": 2,
+      "global_trial_start": 100,
+      "global_trial_end": 200,
+      "iters_used": 100,
+      "controller": "basic",
+      "arm": null,
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "focus_id": "global",
+      "semantic_features": "disabled",
+      "acceptance": "greedy",
+      "global_best_improved": true,
+      "objective_before": {
+        "missed_priority": 6.0,
+        "unassigned_count": 2.0,
+        "energy_total": 26687.374863409525
+      },
+      "objective_after": {
+        "missed_priority": 6.0,
+        "unassigned_count": 2.0,
+        "energy_total": 26268.078647521615
+      },
+      "solver_time_sec": 0.4494099000003189,
+      "executor_stop_reason": "iteration_budget_exhausted"
+    },
+    {
+      "action_index": 3,
+      "global_trial_start": 200,
+      "global_trial_end": 300,
+      "iters_used": 100,
+      "controller": "basic",
+      "arm": null,
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "focus_id": "global",
+      "semantic_features": "disabled",
+      "acceptance": "greedy",
+      "global_best_improved": false,
+      "objective_before": {
+        "missed_priority": 6.0,
+        "unassigned_count": 2.0,
+        "energy_total": 26268.078647521615
+      },
+      "objective_after": {
+        "missed_priority": 6.0,
+        "unassigned_count": 2.0,
+        "energy_total": 26268.078647521615
+      },
+      "solver_time_sec": 0.458109799947124,
+      "executor_stop_reason": "iteration_budget_exhausted"
+    },
+    {
+      "action_index": 4,
+      "global_trial_start": 300,
+      "global_trial_end": 400,
+      "iters_used": 100,
+      "controller": "basic",
+      "arm": null,
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "focus_id": "global",
+      "semantic_features": "disabled",
+      "acceptance": "greedy",
+      "global_best_improved": true,
+      "objective_before": {
+        "missed_priority": 6.0,
+        "unassigned_count": 2.0,
+        "energy_total": 26268.078647521615
+      },
+      "objective_after": {
+        "missed_priority": 5.0,
+        "unassigned_count": 3.0,
+        "energy_total": 26980.196580684948
+      },
+      "solver_time_sec": 0.4817029999685474,
+      "executor_stop_reason": "iteration_budget_exhausted"
+    },
+    {
+      "action_index": 5,
+      "global_trial_start": 400,
+      "global_trial_end": 500,
+      "iters_used": 100,
+      "controller": "basic",
+      "arm": null,
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "focus_id": "global",
+      "semantic_features": "disabled",
+      "acceptance": "greedy",
+      "global_best_improved": false,
+      "objective_before": {
+        "missed_priority": 5.0,
+        "unassigned_count": 3.0,
+        "energy_total": 26980.196580684948
+      },
+      "objective_after": {
+        "missed_priority": 5.0,
+        "unassigned_count": 3.0,
+        "energy_total": 26980.196580684948
+      },
+      "solver_time_sec": 0.45384619996184483,
+      "executor_stop_reason": "iteration_budget_exhausted"
+    },
+    {
+      "action_index": 6,
+      "global_trial_start": 500,
+      "global_trial_end": 600,
+      "iters_used": 100,
+      "controller": "basic",
+      "arm": null,
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "focus_id": "global",
+      "semantic_features": "disabled",
+      "acceptance": "greedy",
+      "global_best_improved": true,
+      "objective_before": {
+        "missed_priority": 5.0,
+        "unassigned_count": 3.0,
+        "energy_total": 26980.196580684948
+      },
+      "objective_after": {
+        "missed_priority": 4.0,
+        "unassigned_count": 2.0,
+        "energy_total": 27348.470803476273
+      },
+      "solver_time_sec": 0.5759063999867067,
+      "executor_stop_reason": "iteration_budget_exhausted"
+    },
+    {
+      "action_index": 7,
+      "global_trial_start": 600,
+      "global_trial_end": 700,
+      "iters_used": 100,
+      "controller": "basic",
+      "arm": null,
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "focus_id": "global",
+      "semantic_features": "disabled",
+      "acceptance": "greedy",
+      "global_best_improved": false,
+      "objective_before": {
+        "missed_priority": 4.0,
+        "unassigned_count": 2.0,
+        "energy_total": 27348.470803476273
+      },
+      "objective_after": {
+        "missed_priority": 4.0,
+        "unassigned_count": 2.0,
+        "energy_total": 27348.470803476273
+      },
+      "solver_time_sec": 0.47454490000382066,
+      "executor_stop_reason": "iteration_budget_exhausted"
+    },
+    {
+      "action_index": 8,
+      "global_trial_start": 700,
+      "global_trial_end": 800,
+      "iters_used": 100,
+      "controller": "basic",
+      "arm": null,
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "focus_id": "global",
+      "semantic_features": "disabled",
+      "acceptance": "greedy",
+      "global_best_improved": false,
+      "objective_before": {
+        "missed_priority": 4.0,
+        "unassigned_count": 2.0,
+        "energy_total": 27348.470803476273
+      },
+      "objective_after": {
+        "missed_priority": 4.0,
+        "unassigned_count": 2.0,
+        "energy_total": 27348.470803476273
+      },
+      "solver_time_sec": 0.5450732000172138,
+      "executor_stop_reason": "iteration_budget_exhausted"
+    },
+    {
+      "action_index": 9,
+      "global_trial_start": 800,
+      "global_trial_end": 900,
+      "iters_used": 100,
+      "controller": "basic",
+      "arm": null,
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "focus_id": "global",
+      "semantic_features": "disabled",
+      "acceptance": "greedy",
+      "global_best_improved": false,
+      "objective_before": {
+        "missed_priority": 4.0,
+        "unassigned_count": 2.0,
+        "energy_total": 27348.470803476273
+      },
+      "objective_after": {
+        "missed_priority": 4.0,
+        "unassigned_count": 2.0,
+        "energy_total": 27348.470803476273
+      },
+      "solver_time_sec": 0.4934991999762133,
+      "executor_stop_reason": "iteration_budget_exhausted"
+    },
+    {
+      "action_index": 10,
+      "global_trial_start": 900,
+      "global_trial_end": 1000,
+      "iters_used": 100,
+      "controller": "basic",
+      "arm": null,
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "focus_id": "global",
+      "semantic_features": "disabled",
+      "acceptance": "greedy",
+      "global_best_improved": true,
+      "objective_before": {
+        "missed_priority": 4.0,
+        "unassigned_count": 2.0,
+        "energy_total": 27348.470803476273
+      },
+      "objective_after": {
+        "missed_priority": 2.0,
+        "unassigned_count": 2.0,
+        "energy_total": 29439.875698601565
+      },
+      "solver_time_sec": 0.4575351999956183,
+      "executor_stop_reason": "iteration_budget_exhausted"
+    },
+    {
+      "action_index": 11,
+      "global_trial_start": 1000,
+      "global_trial_end": 1100,
+      "iters_used": 100,
+      "controller": "basic",
+      "arm": null,
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "focus_id": "global",
+      "semantic_features": "disabled",
+      "acceptance": "greedy",
+      "global_best_improved": true,
+      "objective_before": {
+        "missed_priority": 2.0,
+        "unassigned_count": 2.0,
+        "energy_total": 29439.875698601565
+      },
+      "objective_after": {
+        "missed_priority": 2.0,
+        "unassigned_count": 2.0,
+        "energy_total": 29145.34501864067
+      },
+      "solver_time_sec": 0.4585683000041172,
+      "executor_stop_reason": "iteration_budget_exhausted"
+    },
+    {
+      "action_index": 12,
+      "global_trial_start": 1100,
+      "global_trial_end": 1200,
+      "iters_used": 100,
+      "controller": "basic",
+      "arm": null,
+      "remove_ratio": 0.2,
+      "reaction_factor": 0.1,
+      "block_trials": 100,
+      "focus_id": "global",
+      "semantic_features": "disabled",
+      "acceptance": "greedy",
+      "global_best_improved": true,
+      "objective_before": {
+        "missed_priority": 2.0,
+        "unassigned_count": 2.0,
+        "energy_total": 29145.34501864067
+      },
+      "objective_after": {
+        "missed_priority": 2.0,
+        "unassigned_count": 2.0,
+        "energy_total": 28133.93152638039
+      },
+      "solver_time_sec": 0.5267698999959975,
+      "executor_stop_reason": "iteration_budget_exhausted"
+    }
+  ],
+  "decisions": [],
+  "validation": {
+    "missed_priority": 2.0,
+    "unassigned_count": 2,
+    "energy_total": 28133.9315263804,
+    "routes": [
+      {
+        "agent_id": 0,
+        "energy": 3818.518095926849,
+        "energy_budget": 4748.456171405445,
+        "utilization": 0.8041599117880552,
+        "waiting_time": 1502.7275915665034,
+        "minimum_window_slack": 71.52821050886266
+      },
+      {
+        "agent_id": 1,
+        "energy": 5386.766756722327,
+        "energy_budget": 7887.542951763112,
+        "utilization": 0.6829461075097178,
+        "waiting_time": 1140.96473264457,
+        "minimum_window_slack": 13.593543157774548
+      },
+      {
+        "agent_id": 2,
+        "energy": 4785.946699221539,
+        "energy_budget": 8509.589037461394,
+        "utilization": 0.5624180766136384,
+        "waiting_time": 735.8173396084121,
+        "minimum_window_slack": 61.01296080043443
+      },
+      {
+        "agent_id": 3,
+        "energy": 4730.976788200481,
+        "energy_budget": 5449.809845720905,
+        "utilization": 0.8680994240404847,
+        "waiting_time": 0.0,
+        "minimum_window_slack": 18.337369120450717
+      },
+      {
+        "agent_id": 4,
+        "energy": 4955.008280123079,
+        "energy_budget": 8363.341144152228,
+        "utilization": 0.5924675550976053,
+        "waiting_time": 2599.803905356812,
+        "minimum_window_slack": 65.14689667661793
+      },
+      {
+        "agent_id": 5,
+        "energy": 4456.714906186122,
+        "energy_budget": 5307.689621304043,
+        "utilization": 0.8396713493377095,
+        "waiting_time": 1157.9688415889354,
+        "minimum_window_slack": 64.57617980005523
+      }
+    ]
+  }
+}

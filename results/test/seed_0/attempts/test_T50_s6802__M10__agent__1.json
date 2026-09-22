@@ -1,0 +1,25 @@
+{
+  "case_id": "test_T50_s6802",
+  "n_tasks": 50,
+  "instance_seed": 6802,
+  "maturity": "M10",
+  "fraction": 0.1,
+  "start_seed": 213236061,
+  "algorithm_seed": 0,
+  "method": "agent",
+  "trials": 1200,
+  "objective_order": [
+    "missed_priority",
+    "unassigned_count",
+    "energy_total"
+  ],
+  "start_quality": {
+    "missed_priority": 95.0,
+    "unassigned_count": 45,
+    "energy_total": 8660.537755294094
+  },
+  "attempt": 1,
+  "started_utc": "2026-09-20T18:29:46.906005+00:00",
+  "status": "complete",
+  "elapsed_sec": 24.18604050000431
+}

@@ -1,0 +1,25 @@
+{
+  "case_id": "test_T100_s6801",
+  "n_tasks": 100,
+  "instance_seed": 6801,
+  "maturity": "M50",
+  "fraction": 0.5,
+  "start_seed": 213255174,
+  "algorithm_seed": 0,
+  "method": "basic",
+  "trials": 1200,
+  "objective_order": [
+    "missed_priority",
+    "unassigned_count",
+    "energy_total"
+  ],
+  "start_quality": {
+    "missed_priority": 95.0,
+    "unassigned_count": 50,
+    "energy_total": 35494.47640565839
+  },
+  "attempt": 1,
+  "started_utc": "2026-09-20T18:25:50.480156+00:00",
+  "status": "complete",
+  "elapsed_sec": 13.835510399949271
+}
