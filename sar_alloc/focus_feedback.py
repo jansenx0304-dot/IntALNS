@@ -4,7 +4,7 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import Any, Mapping, Sequence
 
-FOCUS_FEEDBACK_REVISION = "three_level_v1"
+FOCUS_FEEDBACK_KIND = "three_level"
 REVIEW_INSTRUCTION = """
 Focus review for this single-agent variant:
 - Having unresolved tasks makes service_bottleneck available; it does not establish that the bias is useful. global still attempts all unresolved tasks and retains every candidate. It does not abandon service recovery.
@@ -63,7 +63,7 @@ def build_focus_review(history: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
             "service_improving_windows": sum(row["service_prefix_improved"] for row in group) if group else None,
         })
     return {
-        "revision": FOCUS_FEEDBACK_REVISION,
+        "kind": FOCUS_FEEDBACK_KIND,
         "recent_windows": windows[-3:], "outcomes_by_focus": groups,
         "same_focus_service_stagnation_windows": streak,
         "interpretation": (

@@ -8,7 +8,7 @@ from .agent_types import RuntimeContract
 from .domain import QUALITY_METRICS, SERVICE_METRICS, SOFT_FOCUS_RANDOM_WEIGHT
 from .evaluator import build_objective_keys, evaluate
 from .solution import AssignmentSolution
-from .focus_feedback import FOCUS_FEEDBACK_REVISION, build_focus_review
+from .focus_feedback import build_focus_review
 from .search_evidence import evidence_feedback
 
 _MAX_TASK_ROWS = 8
@@ -28,7 +28,7 @@ def build_step_observation(
     landscape = dict(contract.decision_landscape or {})
     feedback = evidence_feedback(
         {"focus_review": build_focus_review(run_state.search_memory.recent_controls(limit=12))},
-        run_state.search_memory, current_phase=_phase(best or summary), revision="random_start_v3")
+        run_state.search_memory, current_phase=_phase(best or summary))
     if len(instance.tasks) <= 50 and _phase(best or summary) == 'energy_refinement':
         from .energy_guidance import exposure
         feedback['search_evidence']['repair_exposure'] = exposure(run_state.search_memory)

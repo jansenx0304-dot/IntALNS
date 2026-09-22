@@ -32,7 +32,7 @@ def large_examples(observation):
             and any(r['remove_ratio'] >= .4 and r['observed_windows'] for r in evidence.get('service_gap_remove_ratio_trials', []))
             and 'large_rebuild' in b['phases']):
         phase = 'large_rebuild'
-    return [{'role':'step','example_id':b['revision']+'_'+phase,'provenance':b['provenance'],
+    return [{'role':'step','example_id':'state_'+phase,'provenance':b['provenance'],
              'scope':b['scope'],**b['phases'][phase]}]
 
 

@@ -49,7 +49,6 @@ def run_one(row,start,method,protocol,output):
                 client=build_client('real',model=protocol['model'],reasoning=protocol['reasoning'],base_url=None,api_key=None)
                 run,points,actions,decisions=run_agent(row,start,algorithm_seed=seed,trials=trials,client=client)
                 method_config={'model':protocol['model'],'reasoning':protocol['reasoning'],
-                    'information_revision':protocol.get('information_revision','unspecified'),
                     'temperature':protocol['temperature'],'max_tokens':protocol['max_tokens'],
                     'selectors':'random','feature_weights':0,'action_trials':100}
             else:

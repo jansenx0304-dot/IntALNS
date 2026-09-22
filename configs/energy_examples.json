@@ -1,11 +1,10 @@
 {
-  "revision": "COMPACT_ENERGY_V15",
   "provenance": {
-    "dataset": "All15 T50 V12 final development states, seeds5200-5204, algorithm seed0",
+    "dataset": "All15 T50 final development states, seeds5200-5204, algorithm seed0",
     "kind": "60 paired two-window probes, each100 exploration+100 consolidation; final states reused, RNG/adaptation reset then carried inside each pair; not full Agent performance",
     "observations": "Greedy best-position random-leading .20 in both windows improved3/15 with total energy gain1520.58. Random-only .20/tolerant .20 then greedy improved3/15, gain749.89. Spatial/random-only .30/tolerant .20 then greedy .20 improved4/15, gain645.57. SA/mixed .20 then greedy improved4/15, gain578.37. Every saved state retained complete service. No single control dominated all states.",
-    "v13_review": "All15 V13 T50 runs complete service; paired result5/6/4. Failed spatial/random-position pairs were repeatedly reselected; random-leading greedy descent was sometimes abandoned after only one quiet window. Retrieval now records actual recipe exposure, provides a factual continuation example, and rotates information away from already tried profiles. No control is executed by retrieval.",
-    "specialized_probes": "75 paired two-window probes on all15 V14 T50 complete finals. Time-only .20 greedy best-position improved2/15 (total1199.79); time-only .40 then .20 improved2/15 (1061.63); worst-only .40 improved0; random-only destruction .20 improved0 and .40 improved1 (351.09). These are short probes with reset history, not full Agent superiority; transferring time-focused descent earlier is unmeasured."
+    "specialized_probes": "75 paired two-window probes on all15 T50 complete finals. Time-only .20 greedy best-position improved2/15 (total1199.79); time-only .40 then .20 improved2/15 (1061.63); worst-only .40 improved0; random-only destruction .20 improved0 and .40 improved1 (351.09). These are short probes with reset history, not full Agent superiority; transferring time-focused descent earlier is unmeasured.",
+    "control_feedback_observations": "All15 T50 runs complete service; paired result5/6/4. Failed spatial/random-position pairs were repeatedly reselected; random-leading greedy descent was sometimes abandoned after only one quiet window. Retrieval now records actual recipe exposure, provides a factual continuation example, and rotates information away from already tried profiles. No control is executed by retrieval."
   },
   "scope": "Complete-service small-instance information only. Actual next controls are chosen by Agent; no fixed execution schedule.",
   "phases": {
@@ -246,7 +245,7 @@
           "mode": "greedy"
         }
       },
-      "basis": "In the V6 T50/s5202/M90 development trajectory, a worst-leading .40/best-only/greedy window lowered energy after repeated .20/.30 stalls. This is a full-control trajectory, not an isolated causal comparison."
+      "basis": "In the T50/s5202/M90 development trajectory, a worst-leading .40/best-only/greedy window lowered energy after repeated .20/.30 stalls. This is a full-control trajectory, not an isolated causal comparison."
     }
   ]
 }

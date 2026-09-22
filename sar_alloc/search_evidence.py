@@ -19,7 +19,7 @@ def _window(row):
         noop_rate=row['noop_rate'], structure_change_rate=row['structure_change_rate'],
         structural_passage_rate=row['structural_passage_rate'])
 
-def evidence_feedback(feedback, memory, *, current_phase, revision=None):
+def evidence_feedback(feedback, memory, *, current_phase):
     windows=[_window(row) for row in memory.recent_controls(limit=12)]
     evidence={'current_phase':current_phase,'observed_action_count':len(windows),
         'recent_windows':windows[-2:],'control_history':windows,

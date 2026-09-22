@@ -55,7 +55,6 @@
     1100,
     1200
   ],
-  "information_revision": "transfer_energy_v17_large_initial_consolidation",
   "agent_example_file": "configs/agent_examples.json",
   "energy_definition": "transfer-only closed-route energy",
   "statistical_unit": "instance, with three dependent nested starts",

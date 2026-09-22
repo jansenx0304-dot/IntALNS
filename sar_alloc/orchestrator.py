@@ -32,7 +32,7 @@ from .domain import (
     terms_from_order,
 )
 from .evaluator import build_objective_keys, compare_quality, evaluate
-from .focus_feedback import FOCUS_FEEDBACK_REVISION, build_focus_window
+from .focus_feedback import FOCUS_FEEDBACK_KIND, build_focus_window
 from .models import Instance
 from .observation import build_step_observation, solution_summary
 from .operators import (
@@ -193,8 +193,8 @@ def run_orchestrator(
             **contract.controls, "selector_modes": ["random"],
             "step_focus_options": [name for name, expansion in contract.search_focus_expansions.items()
                                    if name == "global" or expansion.get("focus_task_ids")],
-            "focus_feedback_revision": FOCUS_FEEDBACK_REVISION,
-            "search_evidence_revision": "random_start_v3",
+            "focus_feedback_kind": FOCUS_FEEDBACK_KIND,
+            "search_evidence_kind": "control_history",
         })
         if not contract.allowed_actions:
             raise OrchestratorError("no legal Agent action remains")
@@ -482,8 +482,8 @@ def _execute_alns(
     )
     payload["search_profile"] = str(search_profile)
     payload["search_policy"] = dict(control.compiler_transform["search_policy"])
-    if control.compiler_transform.get("focus_feedback_revision") == FOCUS_FEEDBACK_REVISION:
-        payload["focus_feedback_revision"] = FOCUS_FEEDBACK_REVISION
+    if control.compiler_transform.get("focus_feedback_kind") == FOCUS_FEEDBACK_KIND:
+        payload["focus_feedback_kind"] = FOCUS_FEEDBACK_KIND
         payload["focus_review_window"] = build_focus_window(payload, action_index=state.search_memory.control_actions + 1)
     payload["executor_trace"]["search_profile"] = str(search_profile)
     return payload

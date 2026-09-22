@@ -551,7 +551,6 @@
   "config": {
     "model": "deepseek-v4-flash",
     "reasoning": "none",
-    "information_revision": "transfer_energy_v15_temporal_energy",
     "temperature": 0.0,
     "max_tokens": 4096,
     "selectors": "random",
@@ -798,7 +797,7 @@
         "focus_changed_selection_count": 326,
         "focus_matched_task_selection_count": 19
       },
-      "focus_feedback_revision": "three_level_v1",
+      "focus_feedback_kind": "three_level",
       "focus_review_window": {
         "action_index": 1,
         "focus_id": "service_bottleneck",
@@ -990,7 +989,7 @@
         "focus_changed_selection_count": 2725,
         "focus_matched_task_selection_count": 404
       },
-      "focus_feedback_revision": "three_level_v1",
+      "focus_feedback_kind": "three_level",
       "focus_review_window": {
         "action_index": 2,
         "focus_id": "service_bottleneck",
@@ -1165,7 +1164,7 @@
         "focus_changed_selection_count": 0,
         "focus_matched_task_selection_count": 0
       },
-      "focus_feedback_revision": "three_level_v1",
+      "focus_feedback_kind": "three_level",
       "focus_review_window": {
         "action_index": 3,
         "focus_id": "global",
@@ -1328,7 +1327,7 @@
         "focus_changed_selection_count": 0,
         "focus_matched_task_selection_count": 0
       },
-      "focus_feedback_revision": "three_level_v1",
+      "focus_feedback_kind": "three_level",
       "focus_review_window": {
         "action_index": 4,
         "focus_id": "global",
@@ -1493,7 +1492,7 @@
         "focus_changed_selection_count": 0,
         "focus_matched_task_selection_count": 0
       },
-      "focus_feedback_revision": "three_level_v1",
+      "focus_feedback_kind": "three_level",
       "focus_review_window": {
         "action_index": 5,
         "focus_id": "global",
@@ -1674,7 +1673,7 @@
         "focus_changed_selection_count": 3546,
         "focus_matched_task_selection_count": 326
       },
-      "focus_feedback_revision": "three_level_v1",
+      "focus_feedback_kind": "three_level",
       "focus_review_window": {
         "action_index": 6,
         "focus_id": "service_bottleneck",
@@ -1866,7 +1865,7 @@
         "focus_changed_selection_count": 4510,
         "focus_matched_task_selection_count": 287
       },
-      "focus_feedback_revision": "three_level_v1",
+      "focus_feedback_kind": "three_level",
       "focus_review_window": {
         "action_index": 7,
         "focus_id": "service_bottleneck",
@@ -2055,7 +2054,7 @@
         "focus_changed_selection_count": 4407,
         "focus_matched_task_selection_count": 287
       },
-      "focus_feedback_revision": "three_level_v1",
+      "focus_feedback_kind": "three_level",
       "focus_review_window": {
         "action_index": 8,
         "focus_id": "service_bottleneck",
@@ -2242,7 +2241,7 @@
         "focus_changed_selection_count": 3547,
         "focus_matched_task_selection_count": 235
       },
-      "focus_feedback_revision": "three_level_v1",
+      "focus_feedback_kind": "three_level",
       "focus_review_window": {
         "action_index": 9,
         "focus_id": "service_bottleneck",
@@ -2429,7 +2428,7 @@
         "focus_changed_selection_count": 4415,
         "focus_matched_task_selection_count": 161
       },
-      "focus_feedback_revision": "three_level_v1",
+      "focus_feedback_kind": "three_level",
       "focus_review_window": {
         "action_index": 10,
         "focus_id": "service_bottleneck",
@@ -2613,7 +2612,7 @@
         "focus_changed_selection_count": 4373,
         "focus_matched_task_selection_count": 186
       },
-      "focus_feedback_revision": "three_level_v1",
+      "focus_feedback_kind": "three_level",
       "focus_review_window": {
         "action_index": 11,
         "focus_id": "service_bottleneck",
@@ -2794,7 +2793,7 @@
         "focus_changed_selection_count": 306,
         "focus_matched_task_selection_count": 14
       },
-      "focus_feedback_revision": "three_level_v1",
+      "focus_feedback_kind": "three_level",
       "focus_review_window": {
         "action_index": 12,
         "focus_id": "service_bottleneck",
@@ -2836,7 +2835,7 @@
       "phase": "step",
       "action": "run_alns",
       "example_ids": [
-        "TRANSFER_STATE_CASES_V6_initial"
+        "state_initial"
       ],
       "decision": {
         "action": "run_alns",
@@ -3024,7 +3023,7 @@
       "phase": "step",
       "action": "run_alns",
       "example_ids": [
-        "TRANSFER_STATE_CASES_V6_progress"
+        "state_progress"
       ],
       "decision": {
         "action": "run_alns",
@@ -3110,7 +3109,7 @@
         "feedback": {
           "history_available": true,
           "focus_review": {
-            "revision": "three_level_v1",
+            "kind": "three_level",
             "recent_windows": [
               {
                 "action_index": 1,
@@ -3516,7 +3515,7 @@
       "phase": "step",
       "action": "run_alns",
       "example_ids": [
-        "TRANSFER_STATE_CASES_V6_stalled"
+        "state_stalled"
       ],
       "decision": {
         "action": "run_alns",
@@ -3603,7 +3602,7 @@
         "feedback": {
           "history_available": true,
           "focus_review": {
-            "revision": "three_level_v1",
+            "kind": "three_level",
             "recent_windows": [
               {
                 "action_index": 1,
@@ -4230,7 +4229,7 @@
       "phase": "step",
       "action": "run_alns",
       "example_ids": [
-        "TRANSFER_STATE_CASES_V6_stalled"
+        "state_stalled"
       ],
       "decision": {
         "action": "run_alns",
@@ -4316,7 +4315,7 @@
         "feedback": {
           "history_available": true,
           "focus_review": {
-            "revision": "three_level_v1",
+            "kind": "three_level",
             "recent_windows": [
               {
                 "action_index": 1,
@@ -5089,7 +5088,7 @@
       "phase": "step",
       "action": "run_alns",
       "example_ids": [
-        "TRANSFER_STATE_CASES_V6_stalled"
+        "state_stalled"
       ],
       "decision": {
         "action": "run_alns",
@@ -5176,7 +5175,7 @@
         "feedback": {
           "history_available": true,
           "focus_review": {
-            "revision": "three_level_v1",
+            "kind": "three_level",
             "recent_windows": [
               {
                 "action_index": 2,
@@ -6027,7 +6026,7 @@
       "phase": "step",
       "action": "run_alns",
       "example_ids": [
-        "TRANSFER_STATE_CASES_V6_stalled"
+        "state_stalled"
       ],
       "decision": {
         "action": "run_alns",
@@ -6114,7 +6113,7 @@
         "feedback": {
           "history_available": true,
           "focus_review": {
-            "revision": "three_level_v1",
+            "kind": "three_level",
             "recent_windows": [
               {
                 "action_index": 3,
@@ -7067,7 +7066,7 @@
       "phase": "step",
       "action": "run_alns",
       "example_ids": [
-        "TRANSFER_STATE_CASES_V6_stalled"
+        "state_stalled"
       ],
       "decision": {
         "action": "run_alns",
@@ -7154,7 +7153,7 @@
         "feedback": {
           "history_available": true,
           "focus_review": {
-            "revision": "three_level_v1",
+            "kind": "three_level",
             "recent_windows": [
               {
                 "action_index": 4,
@@ -8238,7 +8237,7 @@
       "phase": "step",
       "action": "run_alns",
       "example_ids": [
-        "TRANSFER_STATE_CASES_V6_progress"
+        "state_progress"
       ],
       "decision": {
         "action": "run_alns",
@@ -8324,7 +8323,7 @@
         "feedback": {
           "history_available": true,
           "focus_review": {
-            "revision": "three_level_v1",
+            "kind": "three_level",
             "recent_windows": [
               {
                 "action_index": 5,
@@ -9213,7 +9212,7 @@
       "phase": "step",
       "action": "run_alns",
       "example_ids": [
-        "TRANSFER_STATE_CASES_V6_stalled"
+        "state_stalled"
       ],
       "decision": {
         "action": "run_alns",
@@ -9299,7 +9298,7 @@
         "feedback": {
           "history_available": true,
           "focus_review": {
-            "revision": "three_level_v1",
+            "kind": "three_level",
             "recent_windows": [
               {
                 "action_index": 6,
@@ -10311,7 +10310,7 @@
       "phase": "step",
       "action": "run_alns",
       "example_ids": [
-        "TRANSFER_STATE_CASES_V6_stalled"
+        "state_stalled"
       ],
       "decision": {
         "action": "run_alns",
@@ -10397,7 +10396,7 @@
         "feedback": {
           "history_available": true,
           "focus_review": {
-            "revision": "three_level_v1",
+            "kind": "three_level",
             "recent_windows": [
               {
                 "action_index": 7,
@@ -11532,7 +11531,7 @@
       "phase": "step",
       "action": "run_alns",
       "example_ids": [
-        "TRANSFER_STATE_CASES_V6_progress"
+        "state_progress"
       ],
       "decision": {
         "action": "run_alns",
@@ -11617,7 +11616,7 @@
         "feedback": {
           "history_available": true,
           "focus_review": {
-            "revision": "three_level_v1",
+            "kind": "three_level",
             "recent_windows": [
               {
                 "action_index": 8,
@@ -12694,7 +12693,7 @@
       "phase": "step",
       "action": "run_alns",
       "example_ids": [
-        "TRANSFER_STATE_CASES_V6_progress"
+        "state_progress"
       ],
       "decision": {
         "action": "run_alns",
@@ -12779,7 +12778,7 @@
         "feedback": {
           "history_available": true,
           "focus_review": {
-            "revision": "three_level_v1",
+            "kind": "three_level",
             "recent_windows": [
               {
                 "action_index": 9,

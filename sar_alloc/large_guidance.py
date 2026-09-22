@@ -37,5 +37,5 @@ def example(observation):
     if phase is None:
         return None
     bank = _bank()
-    return {'role': 'step', 'example_id': bank['revision'] + '_' + phase,
+    return {'role': 'step', 'example_id': 'large_initial_' + phase,
             'provenance': bank['provenance'], 'scope': bank['scope'], **deepcopy(bank['phases'][phase])}

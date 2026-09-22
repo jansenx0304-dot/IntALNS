@@ -5,7 +5,7 @@ from __future__ import annotations
 from copy import deepcopy
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Mapping
-from .focus_feedback import FOCUS_FEEDBACK_REVISION
+from .focus_feedback import FOCUS_FEEDBACK_KIND
 
 from .domain import (
     DETERMINISTIC_INFORMATIVE_TRIALS,
@@ -157,7 +157,7 @@ class SearchMemory:
             "focus_changed_selections": int(flow.get("focus_changed_selections", 0) or 0),
             "focus_run_best_updates": int(flow.get("focus_run_best_updates", 0) or 0),
         }
-        if result.get("focus_feedback_revision") == FOCUS_FEEDBACK_REVISION:
+        if result.get("focus_feedback_kind") == FOCUS_FEEDBACK_KIND:
             window = deepcopy(result["focus_review_window"])
             if window["action_index"] != self.control_actions or window["focus_id"] != row["focus_id"]:
                 raise ValueError("focus feedback window does not match the executed action")

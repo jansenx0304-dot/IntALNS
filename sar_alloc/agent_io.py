@@ -165,7 +165,7 @@ def compile_step_decision(root: Mapping[str, Any], *, contract: RuntimeContract)
         compiler_transform={
             "search_policy": high,
             **({"step_focus_control": True} if step_focus_control else {}),
-            **({"focus_feedback_revision": contract.controls["focus_feedback_revision"]} if contract.controls.get("focus_feedback_revision") else {}),
+            **({"focus_feedback_kind": contract.controls["focus_feedback_kind"]} if contract.controls.get("focus_feedback_kind") else {}),
             "rank_weights": list(ORDERED_PRIORITY_WEIGHTS),
             "decision_blocks": {
                 "operator_priority": {"destroy_priority": list(destroy_input["destroy_priority"]), "repair_priority": list(insertion_input["repair_priority"])},

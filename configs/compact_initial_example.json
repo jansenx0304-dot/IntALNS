@@ -1,6 +1,6 @@
 {
   "role": "step",
-  "example_id": "COMPACT_INITIAL_V12",
+  "example_id": "compact_initial",
   "provenance": {
     "dataset": "T50 seeds5200-5204, three nested starts, algorithm seed0",
     "kind": "15 paired first-100-trial probes; not full Agent performance",

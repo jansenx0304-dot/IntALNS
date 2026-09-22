@@ -41,8 +41,8 @@ def build_step_decision_catalog(contract: Any) -> Dict[str, Any]:
             "The common candidate pool stays intact. Targets are fixed for this action and resolved tasks lose their bias; "
             "the next Step may choose a new focus using refreshed targets. Focus does not identify blocking assigned tasks for removal."
         )
-    if contract.controls.get("focus_feedback_revision"):
-        catalog["focus_feedback_revision"] = contract.controls["focus_feedback_revision"]
-    if contract.controls.get('search_evidence_revision'):
-        catalog['search_evidence_revision'] = contract.controls['search_evidence_revision']
+    if contract.controls.get("focus_feedback_kind"):
+        catalog["focus_feedback_kind"] = contract.controls["focus_feedback_kind"]
+    if contract.controls.get('search_evidence_kind'):
+        catalog['search_evidence_kind'] = contract.controls['search_evidence_kind']
     return catalog

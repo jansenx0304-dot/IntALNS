@@ -1,5 +1,4 @@
 {
-  "revision": "TRANSFER_STATE_CASES_V6",
   "provenance": {
     "dataset": "temp/agent_tuning, seeds 4200/4201, T50/T100/T300, M10/M90; algorithm seed 0",
     "kind": "96 paired fixed-control probes on 12 development states after a common 300-trial prefix; not real Agent performance",
@@ -7,9 +6,9 @@
     "energy_states": 3,
     "probe_trials": 100,
     "caveat": "State probes reset RNG. Nested starts are dependent; these observations do not prove full-run superiority or isolate individual knobs.",
-    "acceptance_probes": "48 paired 200-trial probes on all eight residual T300 V2 final development states; spatial30/global/best-only and RNG0 held fixed; only acceptance changed.",
-    "new_large_run_review": "Nine complete V4 T300 development runs, seeds5200-5202, M10/M50/M90, algorithm seed0; no formal outcomes.",
-    "v5_review": "Nine full V5 T300 runs on the same development seeds; aggregate L1=55 versus V4=62; no formal feedback."
+    "acceptance_probes": "48 paired 200-trial probes on all eight residual T300 final development states; spatial30/global/best-only and RNG0 held fixed; only acceptance changed.",
+    "large_run_observations": "Nine complete T300 development runs, seeds5200-5202, M10/M50/M90, algorithm seed0; no formal outcomes.",
+    "neighborhood_comparison": "Nine full T300 runs on the same development seeds; aggregate L1=55 versus 62 in the reference runs; no formal feedback."
   },
   "scope": "Single Agent, random selectors, zero features. Illustrations are hypotheses, never forced schedules.",
   "phases": {
@@ -47,7 +46,7 @@
     },
     "stalled": {
       "state": "stalled",
-      "lesson": "If residual service stalls, inspect actual complete controls and distinguish energy-only progress from task recovery. Consider changing the leading spatial/time/random family or removal intensity. Focus cannot remove assigned blockers. Best-only repair is a useful starting hypothesis; random position repair may disrupt feasible structure. Best-only repair is a hypothesis, not a permanent restriction. If the same service gap persists despite changing removal/acceptance with best-only repair, testing mixed best+random POSITION repair is another legal neighborhood; random task selection alone cannot test a different insertion position. V1 sparse-start success motivates this alternative but is not measured residual-state superiority. Do not keep quoting a failed example as if it were untried.",
+      "lesson": "If residual service stalls, inspect actual complete controls and distinguish energy-only progress from task recovery. Consider changing the leading spatial/time/random family or removal intensity. Focus cannot remove assigned blockers. Best-only repair is a useful starting hypothesis; random position repair may disrupt feasible structure. Best-only repair is a hypothesis, not a permanent restriction. If the same service gap persists despite changing removal/acceptance with best-only repair, testing mixed best+random POSITION repair is another legal neighborhood; random task selection alone cannot test a different insertion position. Recorded sparse-start success motivates this alternative but is not measured residual-state superiority. Do not keep quoting a failed example as if it were untried.",
       "illustrative_valid_response": {
         "step_decision": {
           "action": "run_alns",
@@ -120,7 +119,7 @@
     },
     "sparse_initial": {
       "state": "No current-run history; at most 15 percent of tasks remain unassigned.",
-      "lesson": "A nearly populated start can call for a different complete neighborhood than a large backlog. In six actual M90 development runs, V1 completed 5/6 instances with spatial/worst/random destruction and best+random position repair prominent; V2 completed 3/6 with mixed best-only initial controls. Total missed priority was 1 versus 4. These whole-run versions differ in several decisions, so this does NOT isolate repair or prove superiority. Use the illustrated spatial/mixed-position control as a sparse-start hypothesis, retaining random task selection and strict service protection; test the resulting outcome. Best-only remains available, especially after complete coverage for energy refinement.",
+      "lesson": "A nearly populated start can call for a different complete neighborhood than a large backlog. In six actual M90 development runs, the spatial/mixed-position strategy completed 5/6 instances with spatial/worst/random destruction and best+random position repair prominent; the best-only strategy completed 3/6 with mixed best-only initial controls. Total missed priority was 1 versus 4. These whole-run strategies differ in several decisions, so this does NOT isolate repair or prove superiority. Use the illustrated spatial/mixed-position control as a sparse-start hypothesis, retaining random task selection and strict service protection; test the resulting outcome. Best-only remains available, especially after complete coverage for energy refinement.",
       "illustrative_valid_response": {
         "step_decision": {
           "action": "run_alns",
@@ -153,7 +152,7 @@
     },
     "large_stalled": {
       "state": "Large residual assignment with at least two consecutive windows without a service improvement.",
-      "observed_failure": "In the V4 T300/s5201/M10 development run, service stayed at (14,8) from trial500 through1200. Seven further windows used ratio .30, including changes of focus and destroy order, while energy fell. In T300/s5202/M90, a one-task gap persisted through800 although energy improved in every window. These are trajectories, not controlled attribution.",
+      "observed_failure": "In the T300/s5201/M10 development run, service stayed at (14,8) from trial500 through1200. Seven further windows used ratio .30, including changes of focus and destroy order, while energy fell. In T300/s5202/M90, a one-task gap persisted through800 although energy improved in every window. These are trajectories, not controlled attribution.",
       "lesson": "Do not count energy refinement as task recovery. Compare the actual service-gap history. If small neighborhoods and focus changes were already unsuccessful, test a wider removal size while preserving a plausible family and repair policy. Ratios .40/.50 are legal and mean at most40/50 removals, not40/50 percent of300 tasks. The illustrated .50 control is a NEW hypothesis motivated by untested intensity, not a measured winner. If that size already failed or destroyed most useful structure, compare a different leading family or insertion-position mix using live evidence. Energy tolerance only helps energy barriers, never rejected service losses.",
       "illustrative_valid_response": {
         "step_decision": {
@@ -188,7 +187,7 @@
     "large_initial": {
       "state": "Large instance with substantial unassigned backlog and no current-run control history.",
       "lesson": "Consider a spatially coherent neighborhood with moderate-wide destruction and best-position repair. At the start there are no rejection observations: energy tolerance is a hypothesis, not a measured barrier. Preserve the service prefix and judge the next window. Use actual removal counts and available budget rather than maturity labels.",
-      "development_basis": "In V5 T300/s5202/M10, the spatial/random/time family with best-only repair, ratios .40/.50 and tolerant .02 reduced the service gap from (14,8) at600 to (5,3) at1200. In s5200/M50 this wider family failed to resolve (12,7). These are complete-control trajectories; transferring this neighborhood to an initial state is UNMEASURED, not a causal result or a compulsory policy.",
+      "development_basis": "In T300/s5202/M10, the spatial/random/time family with best-only repair, ratios .40/.50 and tolerant .02 reduced the service gap from (14,8) at600 to (5,3) at1200. In s5200/M50 this wider family failed to resolve (12,7). These are complete-control trajectories; transferring this neighborhood to an initial state is UNMEASURED, not a causal result or a compulsory policy.",
       "illustrative_valid_response": {
         "step_decision": {
           "action": "run_alns",
@@ -222,7 +221,7 @@
     "large_rebuild": {
       "state": "At least three service-stalled windows on a large residual state, including an observed ratio .40 or larger.",
       "lesson": "Further widening or focus oscillation may revisit the same repair basin. Check which insertion POSITION policies were actually tried at this service gap. If every failed neighborhood used only best_insertion, consider a bounded mixed best/random-position window with moderate destruction; the random task selector does not provide this position diversity. This is a hypothesis: if mixed positions already failed at this gap, prefer another control supported by current evidence. Retain earlier failures, service protection and the global best. Continue only if subsequent outcomes justify it.",
-      "development_basis": "V5 s5201/M10 stayed (14,8) from500 to1200 despite wider .40/.50 best-only neighborhoods; s5202/M90 stayed (1,1) to1200 after trying wider best-only repair. The original sparse-start mixed-position example is whole-run evidence, not a measured residual-state advantage.",
+      "development_basis": "s5201/M10 stayed (14,8) from500 to1200 despite wider .40/.50 best-only neighborhoods; s5202/M90 stayed (1,1) to1200 after trying wider best-only repair. The original sparse-start mixed-position example is whole-run evidence, not a measured residual-state advantage.",
       "illustrative_valid_response": {
         "step_decision": {
           "action": "run_alns",

@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from typing import Any, Dict
 
 from .decision_examples import render_decision_examples
-from .focus_feedback import FOCUS_FEEDBACK_REVISION, REVIEW_INSTRUCTION
+from .focus_feedback import FOCUS_FEEDBACK_KIND, REVIEW_INSTRUCTION
 from .decision_rationale import valid_rationale_refs
 from .example_bank import large_examples, compact_initial_example
 from . import energy_guidance, decision_consistency, large_guidance
@@ -62,7 +62,7 @@ def _common_instruction(
 
 def step_instruction(
     *, examples_enabled: bool = True, focus_control: bool = True,
-    focus_feedback_revision: str | None = None,
+    focus_feedback_kind: str | None = None,
 ) -> str:
     lines = [
         "Step role:",
@@ -84,7 +84,7 @@ def step_instruction(
     lines.append("- On large instances, distinguish reaching residual tasks from releasing their assigned blockers. If two or more windows at the same service gap fail, consult service_gap_neighborhood_trials and service_gap_remove_ratio_trials before repeating an earlier control. Switching global/service_bottleneck back and forth with the same destruction and repair does not test a new removal neighborhood. If only .20/.30 were tried, a .40 or .50 neighborhood is a concrete alternative for releasing coupled blockers, subject to live feasibility and earlier outcomes. Prefer changing intensity while retaining a promising family before simultaneously replacing everything. A larger size is a hypothesis, not a guaranteed improvement or a fixed schedule.")
     lines.append("- Acceptance counts are measured at candidate level. A rejected L1/L2 loss cannot be repaired by raising energy tolerance. When service rejection dominates despite energy exploration, test a different removal/repair neighborhood instead of increasing tolerance. If energy-only progress persists during service recovery, use the unchanged service-gap history, not reset exact-vector history. Continue an improving service control; after unsuccessful probes retain the failures and avoid calling them untried.")
     instruction = _common_instruction(examples_enabled=examples_enabled) + "\n\n" + "\n".join(lines)
-    if focus_feedback_revision == FOCUS_FEEDBACK_REVISION:
+    if focus_feedback_kind == FOCUS_FEEDBACK_KIND:
         instruction += "\n" + REVIEW_INSTRUCTION
     return instruction
 
@@ -100,14 +100,14 @@ def build_step_prompt_bundle(
     max_examples: int = 1,
     examples_enabled: bool = True,
 ) -> PromptBundle:
-    revision = decision_catalog.get("focus_feedback_revision")
+    feedback_kind = decision_catalog.get("focus_feedback_kind")
     example_count = max(0, min(2, int(max_examples))) if examples_enabled else 0
     large_case = large_guidance.example(observation)
     examples = ([large_case] if large_case is not None else large_examples(observation))[:example_count]
     compact_case = compact_initial_example(observation)
     if compact_case is not None:
         examples = [compact_case][:example_count]
-    instruction = step_instruction(examples_enabled=examples_enabled, focus_control=bool(decision_catalog.get("step_focus_control")), focus_feedback_revision=revision)
+    instruction = step_instruction(examples_enabled=examples_enabled, focus_control=bool(decision_catalog.get("step_focus_control")), focus_feedback_kind=feedback_kind)
     if energy_guidance.applies(observation):
         examples = [energy_guidance.example(observation)][:example_count]
         instruction += "\n" + energy_guidance.INSTRUCTION + "\n" + decision_consistency.INSTRUCTION

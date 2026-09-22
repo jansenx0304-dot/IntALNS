@@ -161,7 +161,7 @@ def run_agent(
         if "focus_id" in dict(decision.get("control", {}) or {}):
             actions[-1]["focus_selection_diagnostics"] = dict(execution.get("search_focus_result", {}) or {})
         if "focus_review_window" in execution:
-            actions[-1]["focus_feedback_revision"] = execution["focus_feedback_revision"]
+            actions[-1]["focus_feedback_kind"] = execution["focus_feedback_kind"]
             actions[-1]["focus_review_window"] = dict(execution["focus_review_window"])
         if progress_callback is not None:
             progress_callback(end_trial, int(client.calls))

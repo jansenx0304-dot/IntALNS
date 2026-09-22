@@ -67,7 +67,7 @@ def example(observation):
             'interpretation':'Counts are matching-family/repair/ratio/mode energy windows; prior tolerance, routes and adaptive weights can differ. Retrieval supplies an example, never an executable decision.'}
         case['illustrative_valid_response']=response(profile['control'],
             'Compare this less-exposed energy neighborhood with the failed controls in live history, and judge the subsequent best-energy outcome at complete service.')
-    return {'role':'step','example_id':b['revision']+'_'+phase,'provenance':b['provenance'],
+    return {'role':'step','example_id':'compact_energy_'+phase,'provenance':b['provenance'],
             'scope':b['scope'],**case}
 
 

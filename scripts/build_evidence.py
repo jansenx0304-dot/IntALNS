@@ -25,7 +25,7 @@ from matplotlib.ticker import MaxNLocator, StrMethodFormatter
 from scripts.case_study import case_evidence
 from experiments.validate import recheck
 from experiments.inference import clustered_sign_flip
-from experiments.record_provenance import information_matches
+from experiments.record_provenance import record_matches_manifest
 from sar_alloc.instance_io import load_instance_from_json
 
 METRICS = ("missed_priority", "unassigned_count", "energy_total")
@@ -80,7 +80,6 @@ def load_verified(root, protocol):
         "status": "frozen", "sizes": list(SIZES), "initial_fractions": PROTOCOL['initial_fractions'],
         "trials": 1200, "action_trials": 100, "algorithm_seed": 0,
         "objective": list(METRICS), "checkpoints": list(TRIALS),
-        "information_revision": PROTOCOL['information_revision'],
         "energy_definition": "transfer-only closed-route energy",
     }
     for key, value in expected.items():
@@ -106,7 +105,7 @@ def load_verified(root, protocol):
         relative = path.relative_to(root).as_posix()
         digest = hashlib.sha256(path.read_bytes()).hexdigest()
         if audited.get(relative) != digest:
-            raise ValueError(f"Record differs from original audit: {relative}")
+            raise ValueError(f"Record differs from integrity manifest: {relative}")
         record = read(path)
         key = (record["case_id"], record["maturity"])
         method = record["method"]
@@ -118,10 +117,10 @@ def load_verified(root, protocol):
             raise ValueError(f"Wrong algorithm seed/objective: {relative}")
         if method == "agent":
             config = record["config"]
-            if (not information_matches(record, path, protocol, root) or config["selectors"] != "random"
+            if (not record_matches_manifest(record, path, root) or config["selectors"] != "random"
                     or config["feature_weights"] != 0 or len(record["actions"]) != 12
                     or len(record["decisions"]) != 12 or any(d["role"] != "step" for d in record["decisions"])):
-                raise ValueError(f"Record is not the frozen single-Agent version: {relative}")
+                raise ValueError(f"Record does not match the fixed single-Agent configuration: {relative}")
         if record["n_tasks"] not in SIZES or record["instance_seed"] not in SEEDS or record["maturity"] not in MATURITIES:
             raise ValueError(f"Unexpected condition: {relative}")
         if tuple(p["trial"] for p in record["checkpoints"]) != TRIALS:
@@ -218,7 +217,7 @@ def summarize(records, rows, protocol):
                "llm_requests": sum(r["llm_usage"].get("requests", 0) for r in records),
                "limitations": ["One algorithm seed", "Only Basic as comparator", "No independent mechanism ablation",
                                 "Concurrent descriptive timing", "Synthetic reference-feasible instances",
-                                "Original V15 cohort reused for a same-condition regression review; not new independent evidence",
+                                "Original fixed cohort reused for a same-condition regression review; not new independent evidence",
                                 "Sequential development is not corrected by the single combined sign-flip p value"]}
     summary['by_cohort'] = {c['name']: {
         'overall': aggregate([r for r in rows if r['seed'] in c['seeds']]),
